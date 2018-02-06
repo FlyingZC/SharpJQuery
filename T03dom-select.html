@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				//1.设置 某个 option选中
+				//在使用disabled,checked,selected时,推荐使用prop()方法
+				//使用prop()不会在html中看到添加的selected="selected"这种字样
+				$("#select1").find("option[value='1']").prop('selected',true);
+				//使用attr也可以,会在html中添加seleted="selected"字样
+				//$("#select1").find("option[value='1']").attr('selected',"selected");
+				
+				//2.获取select的值,即选中的option的值
+				console.log($("#select1").val());
+				//选中项的 text
+				$("#select1").text();
+				
+				//3.判断select选项中 是否存在value="myvalue"的option
+				console.log($("#select2 option:selected[value='myvalue']").length==1);
+				
+				//4.向select中添加option
+				$("#select2").append("<option value='2'>哈哈2</option>");
+				
+				//5.从select中移除option,直接使用option.remove()即可
+				var removeOpt=$("#select2 option[value='1']");
+				removeOpt.remove();
+				
+				//6.修改option的value和text
+				$("#select2 option:selected").attr("value","hhh").text('哈哈修改了text');
+				
+				//7.第几个option选中
+				$("#selected option").eq(0).attr('selected','selected');
+				
+				//8.change事件
+				$("#select1").change(function(){
+					console.log($("#select1").val());
+				});
+				$("#select3").change(function(){
+					console.log($("#select3").val());
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<select id="select1">
+			<option value="">请选择""</option>
+			<option value="1">value为1</option>
+			<option value="2">value为2</option>
+		</select>
+		<select id="select2">
+			<option value="1">value为1</option>
+			<option value="myvalue" selected="selected">哈哈</option>
+		</select>
+		<select id="select3">
+			<option value>请选择,没有value</option>
+			<option value="1">value为1</option>
+			<option value="2">value为2</option>
+		</select>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-2.2.3.min.js"></script>
+		<script src="../js/select2.js"></script>
+		<link rel="stylesheet" type="text/css" href="dist/css/select2.css" />
+		<script>
+			$(function() {
+				//1.使用json
+				var data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
+				$("#c01-select").select2({
+					data: data,
+					placeholder: '请选择',
+					allowClear: true
+				})
+
+				//2.使用远程数据
+				$("#c02-select").select2({
+					ajax: {
+						url: "data.json",
+						dataType: 'json',
+						delay: 250,
+						data: function(params) {
+							return {
+								q: params.term,//查询参数  q参数名
+							};
+						},
+						processResults: function(data) {//返回数据
+							return {
+								results: data//返回数据 给results
+							};
+						},
+						cache: true
+					},
+					escapeMarkup: function(markup) { return markup; },
+					minimumInputLength: 1,//最小需要输入多少个字符才进行查询
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<select id="c01-select" class="select2"></select>
+		<br/>
+		<select id="c02-select" class="select2"></select>
+	</body>
+
+</html>

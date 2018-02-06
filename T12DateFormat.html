@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.2.3.min.js"></script>
+		<script>
+			var formatDate = function(dateFtm, format) {
+				var o = {
+					"M+": dateFtm.getMonth() + 1, //月份   
+					"d+": dateFtm.getDate(), //日   
+					"H+": dateFtm.getHours(), //小时   
+					"m+": dateFtm.getMinutes(), //分   
+					"s+": dateFtm.getSeconds(), //秒   
+					"q+": Math.floor((dateFtm.getMonth() + 3) / 3), //季度   
+					"S": dateFtm.getMilliseconds() //毫秒   
+				};
+				if(/(y+)/.test(format))
+					format = format.replace(RegExp.$1, (dateFtm.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for(var k in o)
+					if(new RegExp("(" + k + ")").test(format))
+						format = format.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return format;
+			};
+			
+			$(function(){
+				new Date("2013-12-12");
+				var date=new Date("2013-12-");
+				console.log(date);
+					console.log(new Date("2013111112-"));
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/inputmask.js"></script>
+		<script>
+			$(function(){
+				var im=new Inputmask("9999-99-99");
+				im.mask($("#txt"));
+				
+				$("#btn").click(function(){
+					var dateStr=$("#txt").val();
+					dateValidate2(dateStr);
+				});
+				
+			});
+			
+			var dateValidate=function(dateStr){
+				console.log(str);
+					var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+					if (!reg.test(str)){
+						console.log("请输入正确的日期格式");
+					}
+					//输出为11__-__-__或1111-11-11
+					var str2=str.replace(/"-"/g,"");
+					var str3=str.split("-").join("");
+					var parResult=parseInt(str3);
+					
+					console.log("str2,"+str2);
+					console.log("str3,"+str3);
+					console.log("parResult,"+parResult);
+					if(str2.length!=8){
+						console.log("日期长度不对");
+						return;
+					//js中的replace(reg)相当于java中的replaceAll(reg),替换与正则相匹配的字符串
+					}
+			}
+			//zc!!!!好用
+			var dateValidate2=function(dateStr){
+				//debugger;
+				var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+				var result = dateStr.match(reg);
+				var d = new Date();
+				//天数超出则加月
+				d.setDate(result[3]);
+				//0表示1月,月份超出11则加年
+				d.setMonth(result[2]-1);
+				d.setFullYear(result[1])
+				console.log(d.toLocaleDateString());
+				console.log((d.getFullYear() == result[1] && (d.getMonth() + 1) == result[2] && d.getDate() == result[3]));
+          		return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[2] && d.getDate() == result[3]);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<button id="btn">click</button>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.0.3.js"></script>
+		<script>
+			function fn1(){alert(1)}
+			function fn2(){alert(2)}
+			
+			$(function(){
+				setTimeout(function(){
+					alert(1);
+				});
+				
+				var dfd=$.Deferred();
+				setTimeout(function(){
+					alert(1);
+					dfd.resolve();//调用 alert2函数
+				},1000);
+				
+				dfd.done(function(){//存
+					alert(2);
+				});
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

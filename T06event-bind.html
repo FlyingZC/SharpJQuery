@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.over{
+				background-color: red;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+		$(function(){
+			$("#btn1").bind("click",function(){
+				$("#test").append("第一次点击");
+			}).bind("click",function(){
+				$("#test").append("第二次点击");
+			}).bind("click",function(){
+				$("#test").append("第三次点击");
+			});
+			//取消绑定
+			$("#btn2").click(function(){
+				$("#btn1").unbind("click");
+			});
+			$("#btn3").bind("click",myFun1=function(){
+				$("#test").append("第一次");
+			}).bind("click",myFun2=function(){
+				$("#test").append("第二次");
+			}).bind("click",myFun3=function(){
+				$("#test").append("第三次");
+			});
+			$("#btn4").click(function(){
+				$("#btn3").unbind("click",myFun2);
+			});
+			//只触发一次的事件one(),当绑定的处理函数执行一次后,就解除绑定事件
+			$("#btn5").one("click",function(){
+				$("#test").append("只触发一次");
+			});
+			//trigger():完成模拟操作(比如模拟用户click事件).先给按钮绑定click事件.
+			//再调用trigger触发click事件
+			$("#btn6").click(function(){
+				$("#test").append("自动点击");
+			});
+			$("#btn6").trigger("click");
+			
+			//trigger()触发自定义事件
+			//先bind自定义事件
+			$("#btn7").bind("myclick",function(){
+				$("#test").append("自动点击自定义事件");
+			});
+			//再trigger触发自定义事件
+			$("#btn7").trigger("myclick");
+			
+			//trigger传递数据
+			$("#btn8").bind("myClick",function(event,msg1,msg2){
+				$("#test").append(msg1+msg2);
+			});
+			$("#btn8").trigger("myClick",["我的自定义","事件"]);
+			
+			//trigger不仅会触发事件,还会触发默认行为
+			//triggerHandler("focus"),只触发事件不触发默认行为
+			//bind多个事件
+			$("div").bind("mouseover mouseout",function(){
+				$(this).toggleClass("over");
+			});
+			//bind添加事件命名空间,便于管理
+			$("#btn9").bind("click.plugin",function(){
+				$("#test").append("命名空间事件1");
+			}).bind("mouseover.plugin",function(){
+				$("#test").append("命名空间事件2");
+			}).bind("dbclick",function(){
+				$("#test").append("未命名空间事件3");
+			});
+			$("#btn10").click(function(){
+				$("#btn9").unbind(".plugin");
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<button id="btn1">点我</button>
+		<button id="btn2">点我取消绑定</button>
+		<button id="btn3">点我</button>
+		<div id="test"></div>
+		<button id="btn4">点我取消一个绑定</button>
+		<button id="btn5">点我一次</button>
+		<button id="btn6">自动点击</button>
+		<button id="btn7">自动触发自定义事件</button>
+		<button id="btn8">trigger传递数据</button>
+		<button id="btn9">命名空间</button>
+		<button id="btn10">删除命名空间事件</button>
+	</body>
+</html>

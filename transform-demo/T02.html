@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery无限旋转动画,暂时不可用</title>
+		<script src="../code/jquery-2.0.3.js"></script>
+		<script>
+			$(function(){
+				$('#d2').animate({rotate: '270deg'},1000);				
+			});
+		</script>
+		<style>
+			#d1{
+				background-image: url('2.jpg');
+				background-repeat: no-repeat;
+			}
+			#d2 {
+				background-image: url('1.png');
+				background-repeat: no-repeat;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width: 104px;height: 104px;" id="d1">
+			<!--旋转div-->
+			<div style="width: 104px;height: 104px;" id="d2"></div>	
+		</div>
+		
+	</body>
+
+</html>

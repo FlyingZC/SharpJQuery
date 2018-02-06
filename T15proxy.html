@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>$.proxy</title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				window.log = console.log;
+				//某些情况下,调用js函数时,this指针不一定是我们期望的那个.比如
+				//正常的this使用
+				$('#myElement').click(function() {
+
+					// 这个this是我们所期望的，当前元素的this.
+
+					$(this).addClass('aNewClass');
+
+				});
+
+				//并非所期望的this
+				$('#myElement').click(function() {
+
+					setTimeout(function() {
+
+						// 这个this指向的是settimeout函数内部，而非之前的html元素
+
+						$(this).addClass('aNewClass');
+
+					}, 1000);
+
+				});
+
+				//这时候怎么办呢，通常的一种做法是这样的：使用that保存this引用
+				$('#myElement').click(function() {
+					var that = this; //设置一个变量，指向这个需要的this
+
+					setTimeout(function() {
+
+						// 这个this指向的是settimeout函数内部，而非之前的html元素
+
+						$(that).addClass('aNewClass');
+
+					}, 1000);
+
+				});
+
+				//!!!但是，在使用了jquery框架的情况下， 有一种更好的方式，就是使用$.proxy函数。
+				//jQuery.proxy(),接受一个函数，然后返回一个新函数，
+				//并且这个新函数始终保持了特定的上下文(context )语境。
+
+				//两种使用 语法
+				//jQuery.proxy( function, context )
+				//				function将要改变上下文语境的函数。
+				//				context函数的上下文语境(`this`)会被设置成这个 object 对象。
+
+				//jQuery.proxy( context, name )
+				//				context函数的上下文语境会被设置成这个 object 对象。
+				//				name将要改变上下文语境的函数名(这个函数必须是前一个参数 ‘context’ **对象的属性)
+
+				//改写
+				$('#myElement').click(function() {
+
+					setTimeout($.proxy(function() {
+
+						$(this).addClass('aNewClass');
+
+					}, this), 1000);
+
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

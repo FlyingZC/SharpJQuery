@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//1.自执行防止污染全局变量
+			var func=(function(){
+				var a="a";
+				var b="b";
+				//2.若想在外面访问(暴露api),
+				//(1)方式1:挂载到window下
+				window.a=a;
+				//(2)方式2:return返回方式  访问
+				return{
+					b:b
+				}
+			})();
+			console.log(a);//a
+			console.log(func.b);//b
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

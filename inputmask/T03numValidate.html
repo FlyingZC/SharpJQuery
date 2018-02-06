@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				console.log(numValidateUtil(111));
+				console.log(numValidateUtil(-111));
+				console.log(numValidateUtil(1.11));
+				//注意一定要传入str,而不是数字
+				var a=00111;
+				console.log(a);
+				console.log(numValidateUtil(a));
+				console.log(numValidateUtil('00111'));
+				console.log(numValidateUtil('111'));
+				console.log(numValidateUtil('-111'));
+				console.log(numValidateUtil('1.11'));
+				
+				
+				console.log(floatValidateUtil('1.11'));
+			});
+			var numValidateUtil=function(str){
+			　var r = /^[1-9][0-9]*$/g;　　//正整数 
+		      return r.test(str);
+			}
+			
+			var floatValidateUtil=function(str){
+				var reg=/^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$/g;
+				return reg.test(str);　　
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

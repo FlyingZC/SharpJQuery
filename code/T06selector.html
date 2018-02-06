@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				width:300px;
+				height: 200px;
+				border:1px solid black;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				//$('li').css('background','red');
+				var aLi=document.getElementsByTagName('li');
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.backgroundColor='red';
+				}	
+			}
+			
+		</script>
+	</head>
+	<body>
+		<li></li>
+		<li></li>
+		<li></li>
+	</body>
+</html>

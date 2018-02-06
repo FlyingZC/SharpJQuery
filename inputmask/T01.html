@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/inputmask.js"></script>
+		<script>
+			$(function(){
+				var im=new Inputmask("9999-99-99");
+				im.mask($("#txt"));
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+	</body>
+</html>

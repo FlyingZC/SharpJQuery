@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			//等待dom元素加载完毕
+			/*
+			 window.onload与$(document).ready()区别
+			 1.window.onload必须在页面所拥有内容加载后执行
+			  $(document).ready()只需在dom加载完毕后即可执行
+			 2.window.onload不能编写多个 
+			 * */
+			$(document).ready(function(){
+				alert("Hello world");
+				//将jQuery对象转为dom对象
+				var $game=$("#game");//jQuery对象
+				var game=$game[0];//dom对象
+				console.log(game);
+				
+				$("#btn").click(function(){
+					console.log(1);
+					if(game.checked){
+						console.log(game.checked);
+						alert("dom对象");
+					}
+					//jQuery对象
+					var $run=$("#run");
+					if($run.is(":checked")){
+						console.log($run.is(":checked"));
+						alert("jQuery对象");
+					}	
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		呵呵
+		<input type="checkbox" id="game" value="1" name="hobby"/>游戏
+		<input type="checkbox" id="run" value="2" name="hobby"/>看书
+		<input type="button" id="btn" value="按钮">
+	</body>
+</html>

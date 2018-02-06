@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="../code/jquery-2.0.3.js"></script>
+		<title>位置</title>
+		
+	</head>
+	<body>
+		<div id="d1">111111</div>
+		<div id="d2" style="width:50%;">111111</div>
+		<div id="d3" style="width:400px;">111111</div>
+	</body>
+	<script>
+			window.log = console.log;
+			log($("#d1")[0]);
+			//一.offsetWidth和style.width:均为width+padding+border
+			//但是offsetWidth在以下表现无差异,style.width有变化
+			//1.当不设置元素宽度
+			//若不设置宽度,style.width返回空字符串
+			log($("#d1")[0].style.width);
+			//offsetWidth在不同屏幕返回的数值不一样
+			log($("#d1")[0].offsetWidth);
+			
+			//2.宽度设置为百分比
+			log($("#d2")[0].style.width);//50%
+			log($("#d2")[0].offsetWidth);//
+			
+			//2.宽度设置为数值
+			//style.width:有单位px
+			log($("#d3")[0].style.width);//400px
+			log($("#d3")[0].offsetWidth);//400
+			
+			//二.offsetHeight :(Height+padding+border)与style.height区别
+			
+			//三.offsetLeft:当前对象到 其上层左边的距离
+			//不能给offsetLeft设值,只能用style.left设值
+			
+			//四.offsetTop
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();			
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+			log();
+		</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/main.css">
+		<script src="../code/jquery-2.0.3.js"></script>
+		<script src="js/jquery.autocompleter.js"></script>
+		<script>
+			var colors=[{"label":"bb","value":"aa"},{"label":"cc","value":"aa"}];
+    $(function(){
+    		$('#nope').autocompleter({
+	        // marker for autocomplete matches
+	        highlightMatches: true,
+	
+	        // object to local or url to remote search
+	        source: colors,
+	
+	        // custom template
+	        template: '{{ value }} <span>({{ label }})</span>',
+	
+	        // show hint
+	        hint: true,
+	
+	        // abort source if empty field
+	        empty: false,
+	
+	        // max results
+	        limit: 5,
+	
+	        callback: function (value, index, selected) {
+	            if (selected) {
+	                $('.icon').css('background-color', selected.hex);
+	            }
+	        }
+    });
+		
+    });
+		</script>
+	</head>
+	<body>
+		 <div class="field">
+
+                <div class="icon"></div>
+
+                <input type="text" name="nope" id="nope" placeholder="Crayola colors" maxlength="40" />
+
+            </div>
+	</body>
+</html>

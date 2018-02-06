@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.over{
+				background-color: red;
+			}
+			.panel{
+				position:relative;
+				width:100px;
+				height:100px;
+				border:1px solid #0050D0;
+				background: #96E555;
+				cursor:pointer;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+		$(function(){
+			//hide()
+			$("#btn1").click(function(){
+				$("#test").hide();
+			});
+			//相当于
+			$("#btn2").click(function(){
+				$("#test").css("display","none");
+			});
+			//show()
+			$("#btn3").click(function(){
+				$("#test").show();
+			});
+			//toggle()控制hide()和show(),没好用
+			$("#btn4").toggle(function(){
+				$("#test").hide();
+			},function(){
+				$("#test").show();
+			});
+			$("#btn5").mouseover(function(){
+				$("#menu").fadeIn();
+			}).mouseout(function(){
+				$("#menu").fadeOut();
+			});
+			//animate(),需要将元素设为relative或absolute
+			$("#panel1").click(function(){
+				console.log(1);
+				$(this).animate({left:"500px"},3000);
+			});
+			//累加,累减动画.在当前位置累加50px!!!
+			$("#panel2").click(function(){
+				$(this).animate({left:"+=50px"},300);
+			});
+			//多重动画
+			$("#panel3").click(function(){
+				$(this).animate({left:"+=50px",height:"+=50px"},3000);
+			});
+			//多次动画
+			$("#panel4").click(function(){
+				$(this).animate({left:"+=50px"},1000).animate({top:"+=50px"},1000)
+				.animate({left:"-=50px"},1000).animate({top:"-=50px"},1000);
+			});
+			//
+			$("#panel5").click(function(){
+				$(this).animate({left:"400px",height:"200px",opacity:"1"},2000)
+				.animate({top:"200px",width:"200px"},3000)
+				.fadeOut("slow");
+			});
+			//
+			$("#panel6").click(function(){
+				$(this).animate({left:"400px",height:"200px",opacity:"1"},2000)
+				.animate({top:"200px",width:"200px"},3000,function(){
+					//该回调函数会在该动画执行完后执行
+					$(this).css("border","5px solid blue");
+				});
+			});
+		});
+	
+		
+		</script>
+	</head>
+	<body>
+		<button id="btn1">hide</button>
+		<button id="btn2">隐藏</button>
+		<button id="btn3">show</button>
+		<div id="test">内容</div>
+		<button id="btn4">toggle</button>
+		<button id="btn5">显示菜单</button>
+		<ul id="menu" style="display:none">
+			<li>呵呵</li>
+			<li>哈哈</li>
+		</ul>
+		<div id="panel1" class="panel"></div>
+		<div id="panel2" class="panel"></div>
+		<div id="panel3" class="panel"></div>
+		<div id="panel4" class="panel"></div>
+		<div id="panel5" class="panel"></div>
+		<div id="panel6" class="panel"></div>
+		<div id="panel7" class="panel"></div>
+		<button id="btn6">动画</button>
+		<button id="btn7">自动触发自定义事件</button>
+		<button id="btn8">trigger传递数据</button>
+		<button id="btn9">命名空间</button>
+		<button id="btn10">删除命名空间事件</button>
+	</body>
+</html>

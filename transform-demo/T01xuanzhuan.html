@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>css3无限中心旋转动画</title>
+		<style>
+			/*背景图不旋转*/
+			#d1{
+				background-image: url('2.jpg');
+				background-repeat: no-repeat;
+			}
+			/*旋转层*/
+			#d2 {
+				background-image: url('1.png');
+				background-repeat: no-repeat;
+				/*对应动画名称*/
+				-webkit-animation-name: my;
+				-webkit-animation-duration: 1s;
+				-webkit-animation-timing-function: linear;
+				-webkit-animation-iteration-count: infinite;/*无限循环*/
+				/*IE*/
+				animation-name: my;
+				animation-duration: 1s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+			
+			@-webkit-keyframes my {
+				0% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(0deg);
+					transform-origin:center center;
+				}
+				25% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					-webkit-transform:rotate(90deg);
+					transform-origin:center center;
+				}
+				50% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(180deg);
+					transform-origin:center center;
+				}
+				75% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(270deg);
+					transform-origin:center center;
+				}
+				100% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(360deg);
+					transform-origin:center center;
+				}
+			}
+			
+			@keyframes my {
+				0% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(0deg);
+					transform-origin:center center;
+				}
+				25% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					-webkit-transform:rotate(90deg);
+					transform-origin:center center;
+				}
+				50% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(180deg);
+					transform-origin:center center;
+				}
+				75% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(270deg);
+					transform-origin:center center;
+				}
+				100% {
+					background-image: url('1.png');
+					background-repeat: no-repeat;
+					transform:rotate(360deg);
+					transform-origin:center center;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width: 104px;height: 104px;" id="d1">
+			<div style="width: 104px;height: 104px;" id="d2"></div>	
+		</div>
+		
+	</body>
+
+</html>

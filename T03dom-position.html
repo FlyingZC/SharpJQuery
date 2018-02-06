@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css位置相关的jquery-api</title>
+		<style>
+			#d1{/*盒子宽 拓展到内容,不到padding*/
+				width:200px;
+				height: 200px;
+				padding: 50px;
+				border:1px solid black;
+				margin:40px;
+				box-sizing: content-box;
+				display: inline-block;
+			}
+			#d2{/*盒子宽 拓展到content+padding+border*/
+				width:200px;
+				height: 200px;
+				padding: 50px;
+				border:1px solid black;
+				margin:40px;
+				box-sizing: border-box;
+				display: inline-block;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			window.log=console.log;
+			$(function(){
+				//jQuery.widthxxx()相关的api,与box-sizing无关!!
+				//width():只获取到content的宽度
+				log($("#d1").width());//200
+				log($("#d2").width());//98
+				
+				//width(xx):设值,也只改变content的width
+//				log($("#d1").width(300));
+//				log($("#d2").width(300));
+				
+				//outerWidth()获取content+padding+border
+				log($("#d1").outerWidth());//302	
+				log($("#d2").outerWidth());//200
+				
+				//outerWidth(true)获取content+padding+border+margin
+				log($("#d1").outerWidth(true));//382
+				log($("#d2").outerWidth(true));//280
+				
+				//innerWidth()获取到content+padding
+				log($("#d1").innerWidth());//300
+				log($("#d2").innerWidth());//198
+				
+				//以下无效
+				/*log($("#d1").innerWidth(true));//
+				log($("#d2").innerWidth(true));//*/
+				
+				
+				log();
+				log();
+				log();
+		/*		$("#d").;
+				$("#d").;*/
+			});
+		</script>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div></div>
+		<div id="d2"></div>
+	</body>
+</html>

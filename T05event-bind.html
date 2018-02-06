@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+		$(function(){
+			//文档装载完成后,使用bind()对匹配元素绑定特定事件,可为一个元素绑定多个事件
+			$("#panel .head").bind("click",function(){
+				//:hidden和:visible为可见性选择器
+				//:hidden用于选择css样式为display:none的元素
+				//对应方法hide(),show()
+				if($(this).next(".content").is(":visible")){
+					$(this).next(".content").hide();
+				}else{
+					$(this).next().show();
+				}
+			});
+			$("#panel .head2").bind("mouseover",function(){
+				$(this).next().show();
+			}).bind("mouseout",function(){
+				$(this).next().hide();
+			});
+			//bind()可以省略
+			$("#panel .head3").mouseover(function(){
+				$(this).next().show();
+			}).mouseout(function(){
+				$(this).next().hide();
+			});
+			//合成事件 hover(),toggle()
+			//hover():当鼠标悬停执行fn1,鼠标离开执行fn2
+			$("#panel .head4").hover(function(){
+				$(this).next().show();
+			},function(){
+				$(this).next().hide();
+			});
+			//toggle():用于模拟鼠标连续单击事件.zc????toggle()还用于切换显示和隐藏,这里理解成了隐藏...
+			//第一次点击触发fn1,第二次fn2....
+			$("#panel .head5").toggle(function(){
+				console.log(1);
+				//$(this).next().toggle();
+			},function(){
+				console.log(2);
+				//$(this).next().toggle();
+			});
+			//冒泡,若该元素的父元素也定义了相同事件,会同时触发
+			$("btn1").click(function(){
+				console.log("btn1被选中");
+			});
+			$("#d2").click(function(){
+				console.log("div2被选中");
+			});
+			$("#d1").click(function(){
+				console.log("d1倍选中");
+			});
+			//停止冒泡
+			$("#btn2").click(function(){
+				console.log("");
+				event.stopPropagation();
+			});
+			//阻止元素的默认行为.preventDefault()
+			$("#sub").click(function(){
+				var username=$("#username").val();	
+				if(username==""){
+					event.preventDefault();
+				}
+			});
+			//return false可同时UI事件对象停止冒泡和取消默认行为
+			//获取事件对象的属性
+			//(1)event.type:获取事件的类型
+			$("#d11").click(function(event){
+				console.log(event.type);//获取事件类型,输出click
+				console.log(event.target);//获取事件源,即触发事件的元素<button>点我</button>
+				console.log("x:"+event.pageX+",y:"+event.pageY);//x:42,y:286
+				return false;//阻止链接跳转
+			});
+			//event.which:在鼠标单击事件中获取到鼠标的左,中,右键.键盘事件中捕获按键
+			$("#whichMouse").mousedown(function(e){
+				//1.鼠标左键,2.鼠标中键,3.鼠标右键
+				console.log(e.which);
+			});
+			$("#whichInput").keyup(function(e){
+				console.log(e.which);
+			});
+			
+			
+		});
+		</script>
+	</head>
+	<body>
+		<div id="panel">
+			<h5 class="head">点我.什么是jquery</h5>
+			<div class="content">
+				jQuery是继dfsdfsdfdsfsdfdsfdfs
+			</div>
+			<h5 class="head2">移动mouseover,mouserout.什么是jquery</h5>
+			<div class="content2">
+				sdfsdfdsfdfdsfsdfsdfsdfdsfsdfdsfdfssdfsdfdsfds
+			</div>
+			<h5 class="head3">移动mouseover,mouserout.什么是jquery</h5>
+			<div class="content3">
+				sdfsdfdsfdfdsfsdfsdfsdfdsfsdfdsfdfssdfsdfdsfds
+			</div>
+			<h5 class="head4">hover模拟鼠标悬停.什么是jquery</h5>
+			<div class="content4">
+				sdfsdfdsfdfdsfsdfsdfsdfdsfsdfdsfdfssdfsdfdsfds
+			</div>
+			<h5 class="head5">toggle():用于模拟鼠标连续单击事件.什么是jquery</h5>
+			<div class="content5">
+				sdfsdfdsfdfdsfsdfsdfsdfdsfsdfdsfdfssdfsdfdsfds
+			</div>
+			<div id="d1">
+				<div id="d2">
+					<button id="btn1">点我</button>
+					<button id="btn2">点我不冒泡</button>
+				</div>
+			</div>
+			<form action="www.baidu.com">
+				姓名:<input type="text" id="username"/><br />
+				<input type="submit" value="提交" id="sub"/>
+			</form>
+			<div id="d11">
+				<div id="d21">
+					<button id="btn11">点我</button>
+					<button id="btn21">点我不冒泡</button>
+				</div>
+			</div>
+			<div>
+				测试event.which<br/>
+				<div id="whichMouse">测试mousedown时的event.which,可用左中右点击</div>
+				<input type="text" id="whichInput" value="键盘"/>
+			</div>
+		</div>			
+	</body>
+</html>

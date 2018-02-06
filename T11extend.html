@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.2.3.min.js"></script>
+		<script>
+			window.log = console.log;
+			//1.自定义jQuery全局函数.需要先引入jquery.相当于添加静态方法.使用jQuery.xxx调用
+			jQuery.extend({
+				minValue:function(a,b){
+					return a<b?a:b;
+				},
+				maxValue:function(a,b){
+					return a<b?b:a;
+				}
+			});
+			//调用
+			log(jQuery.minValue(1,2));
+			log($.minValue(1,2));
+			//不能使用jQuery对象来调用
+			
+			//2.给jQuery类创建的对象的原型添加 方法
+			jQuery.fn.extend({
+				test:function(){
+					alert("呵呵");
+				}
+			});
+			$(function(){
+				//使用jQuery创建的对象来调用
+				$("#btn1").click(function(){
+					$(this).test();
+				});
+			});
+			
+</script>
+	</head>
+	<body>
+		<button id="btn1">点我</button>
+	</body>
+</html>

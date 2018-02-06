@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//1.自执行防止污染全局变量
+			var func=(function(){
+				var a="a";
+				var b="b";
+				//2.若想在外面访问,方式1,挂载到window下
+				
+				window.a=a;
+				//2.返回方式  访问
+				return{
+					b:b
+				}
+			})();
+			console.log(a);
+			console.log(func.b);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

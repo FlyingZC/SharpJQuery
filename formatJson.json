@@ -1,0 +1,565 @@
+{
+	"result": {
+		"moduleId": "demo",
+		"configSet": {
+			"id": "4",
+			"menuConfig": {
+				"name": "HTTPJson",
+				"parent": "11",
+				"className": ""
+			},
+			"pageConfig": {
+				"resultModule": {
+					"dbkey": "COM.EFWK_Class.id|COM.EFWK_STUDENT.id",
+					"pageInfo": {
+						"pageSize": {
+							"value": "\n\t\t\t\t\t\t\t[1,2,3]\n\t\t\t\t\t\t"
+						}
+					},
+					"hasCheckboxColumn": "false",
+					"fields": {
+						"field": [
+							{
+								"id": "COM.EFWK_Class.className",
+								"jsFunc": "",
+								"title": "班级名称",
+								"fieldClass": "",
+								"batchModify": true,
+								"display": false,
+								"titleClass": "",
+								"domDefinition": {
+									"value": "\n\t\t\t\t\t\t\t\t<input></input>\n\t\t\t\t\t\t\t"
+								}
+							}, {
+								"id": "COM.EFWK_Class.students",
+								"jsFunc": "",
+								"title": "班级人数",
+								"fieldClass": "",
+								"validation": {
+									"jsFunc": "",
+									"range": "2..",
+									"required": "true",
+									"regexp": "",
+									"compareExp": ""
+								},
+								"batchModify": true,
+								"display": true,
+								"titleClass": ""
+							}, {
+								"id": "COM.EFWK_STUDENT.name",
+								"jsFunc": "",
+								"title": "学生名称",
+								"fieldClass": "",
+								"batchModify": false,
+								"display": true,
+								"titleClass": "标题样式"
+							}, {
+								"id": "COM.EFWK_STUDENT.level",
+								"jsFunc": "",
+								"title": "入学时间",
+								"pattern": "yyyy-MM-dd HH:mm:ss",
+								"fieldClass": "",
+								"batchModify": false,
+								"display": true,
+								"titleClass": "标题样式",
+								"serviceType": "date"
+							}, {
+								"id": "COM.EFWK_STUDENT.age",
+								"jsFunc": "customCell()",
+								"title": "学生年龄",
+								"fieldClass": "",
+								"batchModify": true,
+								"display": true,
+								"titleClass": "标题样式"
+							}, {
+								"id": "COM.EFWK_STUDENT.gender",
+								"jsFunc": "",
+								"title": "学生性别",
+								"fieldClass": "",
+								"batchModify": false,
+								"display": true,
+								"titleClass": "标题样式",
+								"domDefinition": {
+									"value": "\n\t\t\t\t\t\t\t\t<select class=\"form-control\">\n\t\t\t\t\t\t\t\t\t<option value='0'>男</option>\n\t\t\t\t\t\t\t\t\t<option value=\"1\">女</option>\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t"
+								}
+							}, {
+								"id": "_singleModify",
+								"jsFunc": "",
+								"title": "操作",
+								"name": "单笔修改",
+								"titleClass": ""
+							}, {
+								"id": "_showDetails",
+								"jsFunc": "",
+								"title": "操作",
+								"name": "详细信息",
+								"titleClass": ""
+							}
+						]
+					}
+				},
+				"dataSource": {
+					"protocol": "HTTP",
+					"dataConvert": {
+						"elements": {
+							"element": [
+								{
+									"id": "COM.EFWK_STUDENT.gender",
+									"dic": "COM_ProductType"
+								}, {
+									"id": "COM.EFWK_STUDENT.level",
+									"dataFormat": "yyyy-MM-dd"
+								}
+							]
+						}
+					},
+					"src": "EsCOMHttpJsonTestTwo",
+					"addTo": "EsCOMHttpJsonTestAddTo",
+					"filter": ""
+				},
+				"addModule": [
+					{
+						"id": "001",
+						"after": "cbq1",
+						"submitAction": "",
+						"interceptorBean": {
+							"clazz": "com.afcat.channel.com.ext.AddClassInterceptor"
+						},
+						"before": "cbq",
+						"domCustomized": "",
+						"fields": {
+							"field": [
+								{
+									"id": "COM.EFWK_CLASS.CLASSNAME",
+									"validation": {
+										"jsFunc": "",
+										"range": "4..",
+										"required": "true",
+										"regexp": "",
+										"compareExp": ""
+									},
+									"name": "班级",
+									"className": "",
+									"tips": "请输入班级名称",
+									"serviceType": ""
+								}, {
+									"id": "COM.EFWK_CLASS.STUDENTS",
+									"name": "学生人数",
+									"className": "",
+									"tips": "请输入学生人数",
+									"serviceType": ""
+								}
+							]
+						}
+					}, {
+						"id": "002",
+						"submitAction": "",
+						"domCustomized": "",
+						"fields": {
+							"field": [
+								{
+									"id": "COM.EFWK_STUDENT.CLASSID",
+									"fieldData": {
+										"domType": "select",
+										"hasHead": "true",
+										"condition": "",
+										"value": "COM.EFWK_Class.id",
+										"src": "COM.EFWK_Class.id|COM.EFWK_Class.CLASSNAME",
+										"key": "COM.EFWK_Class.CLASSNAME"
+									},
+									"validation": {
+										"jsFunc": "",
+										"range": "1..",
+										"required": "true",
+										"regexp": "",
+										"compareExp": ""
+									},
+									"disabledWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"name": "班级",
+									"className": "",
+									"tips": "请选择班级名称",
+									"serviceType": "",
+									"requireWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									}
+								}, {
+									"id": "COM.EFWK_STUDENT.age",
+									"showWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"validation": {
+										"jsFunc": "",
+										"required": "true",
+										"regexp": ""
+									},
+									"disabledWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"name": "年龄",
+									"className": "",
+									"tips": "请输入学生年龄",
+									"requireWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									}
+								}, {
+									"id": "COM.EFWK_STUDENT.name",
+									"name": "姓名",
+									"className": "",
+									"tips": "请输入学生姓名",
+									"serviceType": ""
+								}, {
+									"id": "COM.EFWK_STUDENT.gender",
+									"showWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"disabledWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"cascade": {
+										"cascadeItem": []
+									},
+									"name": "性别",
+									"className": "",
+									"tips": "请选择学生性别",
+									"serviceType": "",
+									"requireWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"domDefinition": {
+										"value": "\n\t\t\t\t\t\t\t\t<select class=\"form-control\">\n\t\t\t\t\t\t\t\t\t<option value=\"\">---请选择---</option>\n\t\t\t\t\t\t\t\t\t<option value=\"0\">男</option>\n\t\t\t\t\t\t\t\t\t<option value=\"1\">女</option>\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t"
+									}
+								}, {
+									"id": "COM.EFWK_STUDENT.level",
+									"showWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"pattern": "yyyy-MM-dd HH:mm:ss",
+									"disabledWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"cascade": {
+										"cascadeItem": [
+											{
+												"dispValues": "1,2"
+											}, {
+												"dispValues": "1,3"
+											}
+										]
+									},
+									"name": "入学时间",
+									"className": "",
+									"tips": "请输入入学时间",
+									"serviceType": "timestamp",
+									"requireWhen": {
+										"trigger": "",
+										"jsFunc": "",
+										"jsCode": ""
+									},
+									"domDefinition": {
+										"value": "\n\t\t\t\t\t\t\t"
+									}
+								}
+							]
+						}
+					}, {
+						"id": "003",
+						"submitAction": "submitActionAdd",
+						"domCustomized": "domCustomizedFunc"
+					}
+				],
+				"functionModule": {
+					"functionItem": [
+						{
+							"id": "_singleAdd",
+							"formId": "001",
+							"name": "添加班级",
+							"className": ""
+						}, {
+							"id": "_singleAdd",
+							"formId": "002",
+							"name": "添加学生",
+							"className": ""
+						}, {
+							"id": "_singleAdd",
+							"formId": "003",
+							"name": "添加test",
+							"className": ""
+						}, {
+							"id": "_export",
+							"after": "cbq1",
+							"before": "cbq",
+							"name": "导出",
+							"className": ""
+						}, {
+							"id": "_import",
+							"after": "cbq1",
+							"before": "cbq",
+							"name": "导入",
+							"className": ""
+						}, {
+							"id": "aa",
+							"name": "",
+							"action": "",
+							"className": "",
+							"domDefinition": {
+								"value": "\n\t\t\t\t\t\t<input value='自定义input' id='thisIsCustomInput' onblur=\"alert('我是自定义html')\"></input>\n\t\t\t\t\t"
+							}
+						}, {
+							"id": "aa",
+							"after": "ItemafterFunc",
+							"before": "ItembeforeFunc",
+							"name": "默认button1",
+							"action": "",
+							"className": ""
+						}, {
+							"id": "_batchModify",
+							"name": "",
+							"action": "",
+							"className": ""
+						}
+					]
+				},
+				"displayModel": "TABLE",
+				"modifyModule": {
+					"after": "afterFunc",
+					"submitAction": "submitActionFunc",
+					"interceptorBean": {
+						"clazz": "com.afcat.channel.com.ext.AddClassInterceptor"
+					},
+					"before": "beforeFunc",
+					"domCustomized": "",
+					"fields": {
+						"field": [
+							{
+								"id": "COM.EFWK_STUDENT.CLASSID",
+								"fieldData": {
+									"domType": "select",
+									"hasHead": "true",
+									"condition": "",
+									"value": "COM.EFWK_Class.id",
+									"src": "COM.EFWK_Class.id|COM.EFWK_Class.CLASSNAME",
+									"key": "COM.EFWK_Class.CLASSNAME"
+								},
+								"validation": {
+									"jsFunc": "",
+									"range": "1..",
+									"required": "true",
+									"regexp": "",
+									"compareExp": ""
+								},
+								"disabledWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"name": "班级",
+								"className": "",
+								"tips": "请选择班级名称",
+								"serviceType": "",
+								"requireWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								}
+							}
+						]
+					}
+				},
+				"queryModule": {
+					"after": "afterHandler",
+					"queryAction": "",
+					"before": "queryFormHandler",
+					"domCustomized": "",
+					"fields": {
+						"field": [
+							{
+								"id": "COM.EFWK_Class.className",
+								"fieldData": {
+									"domType": "select",
+									"hasHead": "true",
+									"condition": "conditionFnc",
+									"value": "COM.EFWK_Class.CLASSNAME",
+									"src": "COM.EFWK_Class.id|COM.EFWK_Class.CLASSNAME",
+									"key": "COM.EFWK_Class.CLASSNAME"
+								},
+								"showWhen": {
+									"trigger": "COM.EFWK_STUDENT.age=onchange|COM.EFWK_STUDENT.gender=onchange|document=ready",
+									"jsFunc": "",
+									"jsCode": "1==2"
+								},
+								"validation": {
+									"jsFunc": "",
+									"range": "1..",
+									"required": "true",
+									"regexp": "",
+									"compareExp": ""
+								},
+								"disabledWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"name": "班级",
+								"className": "",
+								"tips": "请选择班级名称",
+								"serviceType": "",
+								"requireWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"disabled": true
+							}, {
+								"id": "COM.EFWK_STUDENT.age",
+								"showWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "showWhenFunc",
+									"jsCode": ""
+								},
+								"validation": {
+									"jsFunc": "validation_JsFunc",
+									"range": "1..3",
+									"required": "true",
+									"regexp": "",
+									"compareExp": "1==1"
+								},
+								"disabledWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"name": "年龄",
+								"className": "",
+								"tips": "请输入学生年龄",
+								"serviceType": "",
+								"requireWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								}
+							}, {
+								"id": "COM.EFWK_STUDENT.name",
+								"showWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"disabledWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "disabledWhen",
+									"jsCode": ""
+								},
+								"name": "姓名",
+								"className": "",
+								"tips": "请输入姓名",
+								"serviceType": "",
+								"requireWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "jsFuncRequireWhen",
+									"jsCode": ""
+								}
+							}, {
+								"id": "COM.EFWK_STUDENT.gender",
+								"showWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"disabledWhen": {
+									"trigger": "document=ready",
+									"jsFunc": "",
+									"jsCode": "1==1"
+								},
+								"cascade": {
+									"cascadeItem": [
+										{
+											"trigger": "COM.EFWK_STUDENT.age=onclick",
+											"jsFunc": "jsFunc",
+											"dispValues": ",0",
+											"jsCode": "document.getElementById('queryForm_COM.EFWK_STUDENT.age').value == 19"
+										}, {
+											"trigger": "COM.EFWK_STUDENT.age=onclick",
+											"jsFunc": "jsFunc",
+											"dispValues": ",1",
+											"jsCode": "document.getElementById('queryForm_COM.EFWK_STUDENT.age').value == 19"
+										}
+									]
+								},
+								"name": "性别",
+								"className": "",
+								"tips": "请选择学生性别",
+								"serviceType": "",
+								"requireWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"domDefinition": {
+									"value": "\n\t\t\t\t\t\t\t\t<select class=\"form-control\">\n\t\t\t\t\t\t\t\t\t<option value=\"\">---请选择---</option>\n\t\t\t\t\t\t\t\t\t<option value=\"0\">男</option>\n\t\t\t\t\t\t\t\t\t<option value=\"1\">女</option>\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t"
+								}
+							}, {
+								"id": "COM.EFWK_STUDENT.level",
+								"showWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"pattern": "yyyy-MM-dd",
+								"disabledWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"cascade": {
+									"cascadeItem": [
+										{
+											"dispValues": "1,2"
+										}, {
+											"dispValues": "1,3"
+										}
+									]
+								},
+								"name": "入学时间",
+								"className": "",
+								"tips": "请选择入学时间",
+								"serviceType": "date",
+								"requireWhen": {
+									"trigger": "",
+									"jsFunc": "",
+									"jsCode": ""
+								},
+								"domDefinition": {
+									"value": "\n\t\t\t\t\t\t\t"
+								}
+							}
+						]
+					}
+				}
+			}
+		}
+	},
+	"returnCode": "000000",
+	"returnMessage": "Success"
+}

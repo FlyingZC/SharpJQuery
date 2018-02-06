@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.0.3.js"></script>
+		<script>
+			$(function() {
+				//$.when只能对deferred对象使用.
+				//dtd.resolve()将未完成改为已完成状态
+				//deferred.reject()将未完成改为以失败
+				//deferred对象三种状态:未完成(继续等待),已完成(deferred立即调用done()中的回调),以失败(调用fail()中的回调)
+				$.when(a("1"), b("2")).done(function() {
+					alert("哈哈");
+				}).fail(function() {
+					alert("出错了");
+				});
+
+				$.when(wait(dtd)).done(function() {
+					alert("哈哈");
+				}).fail(function() {
+					alert("出错了");
+				});
+
+			});
+
+			var a = function(a) {
+				alert(a);
+			}
+
+			var b = function(a) {
+				alert(a);
+			}
+
+			var dtd = $.Deferred();
+
+			var wait = function(dtd) {
+				var task = function() {
+					alert("执行完毕");
+					dtd.resolve(); //改变deferred对象的执行状态
+				}
+				setTimeout(task, 5000);
+				return dtd;
+			};
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

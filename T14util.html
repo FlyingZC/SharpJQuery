@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery自带工具方法</title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				window.log = console.log;
+				//jQuery.each(objOrArr,[callback]):遍历数组 或 对象!!
+				//return true相当于break. return false相当于continue
+				//遍历 数组
+				$.each(['A','B','C'],function(index,item){
+					log(index+"->"+item);
+				});
+				//遍历 对象
+				$.each({name:'zc',age:11},function(key,value){
+					log(key+"->"+value);
+				});
+				
+				//jQuery.extend
+				
+				//$.grep(array,callback)
+				var arr=$.grep([10,11,12],function(elem,index){
+					return elem>10;
+				});
+				console.log(arr);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

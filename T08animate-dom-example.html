@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<style>
+			#tooltip{
+				position:absolute;
+				border:1px solid #333;
+				background:#f7f5d1;
+				padding:1px;
+				color:#333;
+			}
+		</style>
+		<script>
+		$(function(){
+			$(".tooltip").mouseover(function(e){
+				console.log(1);
+				//显示title
+				//1.创建div
+				var tooltip="<div id='tooltip'>"+this.title+"</div>";
+				$("body").append(tooltip);
+				$("#tooltip").css({
+					"top":(e.pageY+10)+"px",
+					"left":(e.pageX+10)+"px"
+				}).show("fast");//设置x,y坐标,并显示
+			}).mouseout(function(){
+				//隐藏title
+				$("#tooltip").remove();//移除
+			}).mousemove(function(e){//!!!鼠标移动事件
+				$("#tooltip").css({
+					"top":(e.pageY+10)+"px",
+					"left":(e.pageX+10)+"px"
+				});
+			});
+		});
+		</script>
+	</head>
+	<body>
+			<p>
+				<a href="#" class="tooltip" title="这是超链接标题">提示1</a>
+			</p>
+			
+	</body>
+</html>

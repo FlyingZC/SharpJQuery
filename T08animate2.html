@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.over{
+				background-color: red;
+			}
+			.panel{
+				position:relative;
+				width:100px;
+				height:100px;
+				border:1px solid #0050D0;
+				background: #96E555;
+				cursor:pointer;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+		$(function(){
+			//hover支持两个function,一个在悬停时触发,一个在离开时触发
+			//stop()停止正在执行的动画
+			$("#panel1").hover(function(){
+				$(this).stop().animate({height:"150",width:"300"},200);
+			},function(){
+				$(this).stop().animate({height:"22",widht:"60"},300);
+			});
+			//由于stop只会停止当前动画,则在执行animate:heigth150时移除,animate:width300仍会执行
+			$("#panel2").hover(function(){
+				$(this).stop().animate({height:"150"},400).animate({width:"300"},400);
+			},function(){
+				$(this).stop().animate({height:"50"},400).animate({width:"30"},400);
+			});
+			//stop(true):会停止当前动画并清空动画队列
+			$("#panel3").hover(function(){
+				$(this).stop(true).animate({height:"150"},400).animate({width:"300"},400);
+			},function(){
+				$(this).stop(true).animate({height:"50"},400).animate({width:"30"},400);
+			});
+			//判断元素是否处于动画状态
+			/*if(!$("#panel4").is(":animated")){
+				$(this).animate({left:"400px",height:"200px",opacity:"1"},3000).delay(1000)
+				.animate({top:"200px",width:"200px"},3000).delay(2000).fadeOut("slow");
+			}*/
+			//toggle():切换元素可见状态,则切换为隐藏.若隐藏切换为可见
+			$("#panel5").click(function(){
+				$(this).next().toggle();
+			});
+		});
+	
+		
+		</script>
+	</head>
+	<body>
+		<button id="btn1">hide</button>
+		<button id="btn2">隐藏</button>
+		<button id="btn3">show</button>
+		<div id="test">内容</div>
+		<button id="btn4">toggle</button>
+		<button id="btn5">显示菜单</button>
+		<ul id="menu" style="display:none">
+			<li>呵呵</li>
+			<li>哈哈</li>
+		</ul>
+		<div id="panel1" class="panel"></div>
+		<div id="panel2" class="panel"></div>
+		<div id="panel3" class="panel"></div>
+		<div id="panel4" class="panel"></div>
+		<div id="panel5" class="panel"></div>
+		<div id="panel6" class="panel"></div>
+		<div id="panel7" class="panel"></div>
+		<button id="btn6">动画</button>
+		<button id="btn7">自动触发自定义事件</button>
+		<button id="btn8">trigger传递数据</button>
+		<button id="btn9">命名空间</button>
+		<button id="btn10">删除命名空间事件</button>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload=function(){
+				//1.通常的面向对象
+			var Person=function(){
+				
+			}
+			Person.prototype.init=function(){
+				
+			}
+			Person.prototype.fly=function(){
+				
+			}
+			var p1=new Person();
+			p1.init();
+			p1.fly();
+			
+			//2.jQuery中的做法
+			var jQuery=function(){
+				return new jQuery.prototype.init();//调用init()方法,且init()方法也返回jQuery对象
+			}
+			jQuery.prototype.init=function(){
+				console.log("--jQuery--init--");
+			}
+			jQuery.prototype.fly=function(){
+				console.log("--jQuery--fly--");
+			}
+			//283行                                                   //jQuery构造函数的原型对象
+			jQuery.prototype.init.prototype=jQuery.prototype;
+			//调用时 调用22行jQuery的构造函数,返回init,且init的原型对象 和jQuery的原型对象相同
+			jQuery().fly();
+			
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

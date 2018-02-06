@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-2.2.3.min.js"></script>
+		<script src="../horsey/js/horsey.js"></script>
+		<script>
+		$(function(){
+			horsey(kv, {
+			    suggestions: [
+			      { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+			      { value: 'apple', text: 'Red apples from New Zealand' },
+			      { value: 'orange', text: 'Oranges from Moscow' },
+			      { value: 'lemon', text: 'Juicy lemons from the rich Amalfitan Coast' }
+			    ]
+			  });
+		});
+			  
+
+		</script>
+	</head>
+	<body>
+		<input type="text" id="kv" />
+	</body>
+</html>

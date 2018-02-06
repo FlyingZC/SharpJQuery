@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.blue {
+				background-color: blue;
+			}
+			
+			.max {
+				font-size: 30px;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				$("#txt1").focus(function() {
+					if($(this).val() == "请输入") {
+						$(this).val("");
+					}
+				}).blur(function() {
+					if($(this).val() == "") {
+						$(this).val("请输入");
+					}
+				});
+
+				//选中value为ganme和swim的checkbox选项
+				$(":checkbox").val(["game", "swim"]);
+
+				//或者$("[value=game]:checkbox").attr("checked",true);
+				//$("#sel option:eq(1)").attr("selected",true);
+
+				//children()
+				//length与size()无区别
+				var $bodyChilds = $("body").children();
+				for(var i = 0; i < $bodyChilds.size(); i++) {
+					//console.log($(this).html());
+					//console.log($bodyChilds[i]);
+				}
+
+				console.log($("#txt1").next().prev().siblings());
+				//parent():父亲.parents():祖辈,closest():从当前向上寻找最近匹配
+				//操作css-dom
+				//获取css
+				console.log($("p").css("color"));
+				//相当于 element.style.background-color=green;
+				$("#d1").css("backgroundColor", "green");
+				$("#d1").css({ "fontSize": "30px", "backgroundColor": "orange" });
+				$("#d1").css("opacity", "0.5"); //透明度
+				console.log($("#d1").css("height"));
+				console.log($("#d1").height());
+
+				console.log("---offset()---");
+				//offset()获取元素在当前视窗的相对偏移.包含top和left属性
+				console.log($("#d1").offset().top);
+				console.log($("#d1").offset().left);
+
+				console.log("---position()---");
+				//position()获取元素相对于 最近一个position样式属性设置为relative或absolute的祖先节点的相对偏移
+				console.log();
+				console.log($("#r1").position().top);
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="text" id="txt1" value="请输入" />
+		<br/>
+		<input type="checkbox" name="hobby" id="游戏" value="game">游戏
+		<input type="checkbox" name="hobby" id="游戏" value="swim">游泳
+		<p title="选择你喜欢的水果">选择你喜欢的水果?</p>
+		<ul>
+			<li title="苹果">苹果</li>
+			<li title="句子">句子</li>
+			<li title="菠萝">菠萝</li>
+		</ul>
+		<div id="d1">
+			哈哈
+			<span>呵呵</span>
+			<div style="position: absolute;">
+				absolute里
+				<div style="position: relative;" id="r1">relative里</div>
+			</div>
+		</div>
+		<div>
+			<form>
+				
+			<textarea rows="3">
+				范德萨发生地方第三方第三方都是<br />
+				范德萨发生地方第三方第三方都是<br />
+				范德萨发生地方第三方第三方都是<br />
+				范德萨发生地方第三方第三方都是<br />
+				范德萨发生地方第三方第三方都是<br />
+				范德萨发生地方第三方第三方都是<br />
+			</textarea>	
+			</form>
+			
+		</div>
+		<h1>哦哦</h1>
+		<h2>
+			
+		</h2>
+		<button id="btn1">测试replaceWith</button>
+		<button id="btn2">测试toggleClass</button>
+		<br/>
+		<button id="btn3">测试html,text,val</button>
+	</body>
+
+</html>

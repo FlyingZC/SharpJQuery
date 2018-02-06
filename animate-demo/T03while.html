@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../code/jquery-2.0.3.js"></script>
+
+	</head>
+
+	<body>
+	</body>
+	<script>
+		$(function() {
+			//var css = { left: '500px' };
+
+			/*setInterval(function() {
+				$('.arrow').animate(css, 300, rowBack);
+			}, 300);
+
+			function rowBack() {
+				if(css.left === '50px')
+					css.left = '500px';
+				else if(css.left === '500px')
+					css.left = '50px';
+			}*/
+
+		});
+
+		var t = 0;
+		t = setInterval(
+			setBackground
+		, 500);
+
+		function setBackground() {
+			switch(t % 2) {
+				case 0:
+					{
+						$('body').css("background-image", "url('1.png'),url('3.png') no-repeat center center fixed");
+						//$('body').css("background", "url('3.png') no-repeat center center fixed");
+						t++;
+						break;
+					}
+				case 1:
+					{
+						
+						//$('body').css("background", "url('2.png') no-repeat center center fixed");
+						$('body').css("background-image", "url('2.png') no-repeat center center fixed");
+						t++;
+						break;
+					}
+					/*case 2:
+						{
+							$('body').css("background", "url('page_3.jpg') no-repeat center center fixed");
+							break;
+						}
+					case 3:
+						{
+							$('body').css("background", "url('page_4.jpg') no-repeat center center fixed");
+							break;
+						}*/
+			}
+
+		}
+	</script>
+
+</html>

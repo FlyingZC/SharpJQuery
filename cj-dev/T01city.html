@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>省市县三级联动</title>
+		<script src="../js/jquery-2.0.3.js"></script>
+		<script src="T01city.js"></script>
+		<style>
+			.tab-citylinkage {
+				width: 359px;
+				height: 280px;
+				border: 1px solid #CDCDCD;
+				position: absolute;
+				top: 30px;
+				left: -1px;
+			}
+			
+			.tab-head {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			.tab-head-name {
+				width: 119px;
+				height: 100%;
+				float: left;
+				text-align: center;
+				cursor: pointer;
+				background-color: #F1F1F1
+			}
+			
+			.tab-head-name2 {
+				width: 119px;
+				height: 100%;
+				float: left;
+				text-align: center;
+				border: 1px solid #CDCDCD;
+				cursor: pointer;
+				border-top: none;
+				background-color: #F1F1F1
+			}
+			
+			.tab-head-borderbottom {
+				border-bottom: 1px solid #CDCDCD;
+			}
+			
+			.tab-head-borderbottom-none {
+				border-bottom: none;
+			}
+			
+			.tab-body {
+				width: 100%;
+				height: 240px;
+				overflow: auto
+			}
+			
+			.tab-body-detailInfo {
+				margin: 3px 6px;
+				padding: 0px 3px;
+				min-width: 70px;
+				width: auto;
+				text-align: center;
+				height: 20px;
+				line-height: 20px;
+				cursor: pointer;
+				float: left;
+				display: inline-block;
+				/*background-color: #c5c5c5;*/
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				border-radius: 4px;
+			}
+			
+			.selectedStyle {
+				background: #f60;
+				color: #fff
+			}
+		</style>
+		<script>
+			$(function(){
+				$.citylinkage.init({
+					contentId: "cityselect" //接收容器的id
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div type="text" id="cityselect" style="width: 357px;border: 1px solid black;height: 50px;" align="center"></div>
+	</body>
+
+</html>

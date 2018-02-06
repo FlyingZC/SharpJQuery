@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.blue{
+				background-color: blue;
+			}
+			.max{
+				font-size:30px;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				console.log($("ul li:eq(1)").text());
+				console.log($("p").attr("title"));
+				$("ul").append("<li>呵呵</li>");
+				var $li2=$("<li>哈哈</li>");
+				$("ul").append($li2);
+				$("ul :last").text("好吧");
+				$("ul :last").attr("title","好吧");
+				$("ul").before("<p>在此之前<p>");
+				$("ul").after("<p>在此之后</p>");
+				$("div").empty();
+				$("h1").remove();
+				//clone(),若加true,则连同事件复制
+				$("ul li").click(function(){
+					$(this).clone().appendTo("h2");
+				});
+				//replaceWith,replaceAll
+				$("#btn1").click(function(){
+					$(this).replaceWith("<button>呵呵</button>");
+				});
+				//wrap,在元素外包裹
+				$("p").wrap("<div style='background-color:red;'></div>");
+				//addClass()追加,不回删除原先的属性值.  attr()替换
+				$("div").addClass("blue").addClass("max").removeClass("blue");
+				$("#btn2").click(function(){
+					$(this).toggleClass("blue");
+					console.log($(this).hasClass("blue"));
+					console.log($(this).is(".blue"));
+				});
+				//text(),html(),val()
+				var i=0;
+				$("#btn3").click(function(){
+					if(i==0){
+						$(this).text("<div class='blue'>呵呵</div>");						
+					}
+					if(i==1){
+						$(this).html("<div class='blue'>呵呵</div>");
+					}
+					console.log(i);
+					i++;
+					
+					if(i==2){
+						i=0;
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p title="选择你喜欢的水果">选择你喜欢的水果?</p>
+		<ul>
+			<li title="苹果">苹果</li>
+			<li title="句子">句子</li>
+			<li title="菠萝">菠萝</li>
+		</ul>
+		<div>
+			哈哈
+			<span>呵呵</span>
+		</div>
+		<h1>哦哦</h1>
+		<h2>
+			
+		</h2>
+		<button id="btn1">测试replaceWith</button>
+		<button id="btn2">测试toggleClass</button>
+		<br/>
+		<button id="btn3">测试html,text,val</button>
+	</body>
+</html>
