@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.0.3.js"></script>
+		<script>
+			function fn1(){alert(1)}
+			function fn2(){alert(2)}
+			/*
+			 * $.when() 函数 提供一种方法来 执行一个或多个对象的回调函数(当多个promise对象的回调都执行完后,再执行when的回调)。
+			 * 提示:如果向 jQuery.when 传入一个延迟对象，那么会返回它的 Promise 对象(延迟方法的一个子集)。
+			 * 可以继续绑定 Promise 对象的其它方法，例如， defered.then 。
+			 * 当延迟对象已经被受理（resolved） 或被拒绝(rejected）（通常是由创建延迟对象的最初代码执行的），那么就会调用相应的回调函数。
+			 */
+			$(function(){
+				var a = test();
+				alert('--调用结束后的a--');
+				
+			});
+			
+			var test = function () {
+				var dfd=$.Deferred();
+				setTimeout(function(){
+					alert('d1执行中');
+					dfd.resolve();//调用 alert2函数
+				},1000);
+				
+				dfd.done(function(){
+					alert('d1-done');
+				});
+				
+				var dfd2=$.Deferred();
+				setTimeout(function(){
+					alert('d2执行中');
+					dfd2.resolve();//调用 alert2函数
+				},2000);
+				
+				dfd2.done(function(){
+					alert('d2-done');
+				});
+				
+				$.when(dfd, dfd2).then(function(){//success callback
+					alert('when successcallback');
+				},function(){//fail callback
+					alert('when errorcallback');
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

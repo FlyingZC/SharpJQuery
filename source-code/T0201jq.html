@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第二章 构造jquery对象</title>
+		<script src="jquery-1.7.1-my.js"></script>
+		<script>
+			// jQuery(selector, [context]) 接受一个css选择器表达式 和 [可选的选择器上下文]. 返回一个包含匹配DOM元素的jQuery对象
+			$('#id1', 'div');// [span#id1],等价于$('div').find('#id1')
+			
+			// jQuery(html, [ownerDocument]), jQuery(html, props) 用提供的html代码 创建dom元素
+			$('<div>呵呵<div>');// [div]
+			
+			// jQuery(element), jQuery(elementArray) 封装dom元素为jQuery对象
+			
+			// jQuery(object) 封装普通对象为jQuery对象
+			
+			// jQuery(callback) 绑定ready事件监听函数,当dom结构加载完成时执行
+			
+			// jQuery(jQuery object) 接受一个jQuery对象, 返回该jQuery对象的拷贝副本
+			
+			// jQuery() 创建一个空jQuery对象
+			
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id="id1"></span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-2.0.3.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btnWait").click(function() {
+					CallAsync();
+				});
+			});
+
+			function Task(count) // 长时间的任务
+			{
+				for(var k = 1; k <= count; k++) {
+					var x = Math.sqrt(2017) * Math.sqrt(2016);
+				}
+			}
+
+			function CallAsync() {
+				var div = "<div id='waitPanel' style='position: fixed; left: 0px;  top: 0px; width: 100%; height: 100%; z-index: 9999; background: silver; opacity: 0.05'></div>";
+				$(document.body).append(div); // 以div块隔离网页与操作者
+				$(document.body).css("cursor", "wait"); // 显示一个wait光标
+
+				var observer = $.Deferred(function(defObj) // 获取一个延迟对象
+					{
+						alert('下面的定时器执行10秒');
+						setTimeout(function() {
+							Task(999999999);
+							alert('回调中');
+							defObj.resolve(); // 任务结束后发送一个done事件通知
+						}, 1000); // 1000毫秒后执行长时间的任务
+					});
+
+				observer.done(function() // 给延迟对象订阅一个done事件
+					{
+						$("#waitPanel").remove();
+						$(document.body).css("cursor", "");
+						alert("async task done.");
+					});
+			}
+		</script>
+	</head>
+
+	<body>
+		<input id="btnWait" type="button" value="WaitCursor" />
+	</body>
+
+</html>
